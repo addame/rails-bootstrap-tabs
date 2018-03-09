@@ -1,7 +1,7 @@
 module RailsBootstrapTabs::Renderers
   class TabsBootstrap4Renderer < TabsRenderer
     def render_tabs_wrapper
-      content_tag :ul, class: 'nav nav-tabs' do
+      content_tag :ul, class: 'nav nav-tabs nav-justified', role: 'tablist' do
         yield
       end
     end
@@ -10,8 +10,9 @@ module RailsBootstrapTabs::Renderers
       options = tab.options
       link_class = 'nav-link'
       link_class << ' active' if options[:active]
+      area_selected = (if options[:active])? 'true' : 'false'
       content_tag :li, class: 'nav-item' do
-        link_to "##{options[:anchor]}", data: { toggle: 'tab' }, class: link_class do
+        link_to "##{options[:anchor]}", data: { toggle: 'tab' }, class: link_class, role: 'tab', 'area_selected': area_selected do
           yield
         end
       end
