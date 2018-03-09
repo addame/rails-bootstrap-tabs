@@ -10,7 +10,7 @@ module RailsBootstrapTabs::Renderers
       options = tab.options
       link_class = 'nav-link'
       link_class << ' active' if options[:active]
-      area_selected = (if options[:active])? 'true' : 'false'
+      area_selected = (options[:active])? 'true' : 'false'
       content_tag :li, class: 'nav-item' do
         link_to "##{options[:anchor]}", data: { toggle: 'tab' }, class: link_class, role: 'tab', 'area_selected': area_selected do
           yield
